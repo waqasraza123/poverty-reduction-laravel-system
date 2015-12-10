@@ -133,10 +133,19 @@ $(function(){
     /**
      * send the request to get the problem stats
      */
-    if(windows.location.pathname == "/"){
+    if(window.location.pathname == "/"){
         $.ajax(
             {
-                
+                url: '/',
+                type: 'post',
+                dataType: 'json',
+                success: function(data){
+                    $(".info-box-number.total").html(data[0]);
+                    $(".info-box-number.solved").html(data[1]);
+                    $(".info-box-number.unsolved").html(data[2]);
+                },error: function(xhr, status, thrownError){
+                alert(xhr.status+" ,"+" "+status+", "+thrownError);
+            }
             }
         );
     }

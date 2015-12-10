@@ -195,6 +195,28 @@ index page problem stats css****************************************************
     margin-top: 20px;
 }
 
+.info-box-content {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    margin-left: 8%;
+}
+.info-box-icon {
+    top: 50%;
+    position: absolute;
+    transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+}
+.info-box-number {
+    font-size: 50px;
+}
 /*
 index page problem stats css############################################################ #for end
 */

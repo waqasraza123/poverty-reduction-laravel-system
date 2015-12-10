@@ -50,7 +50,12 @@ Route::get('help-patient', function(){
 //update the dashboard
 Route::post('update-donner-dashboard', 'DonnerController@updateDashboard');
 Route::post('remove-cookie', 'DonnerController@destroyCookie');
+
+//get the stats data for index page
+Route::post('/', 'HomeController@getStats');
+
 Route::get('test', function(){
+
     return view('Pages.test');
 });
 Route::post('test', function(\Illuminate\Http\Request $request){

@@ -1,4 +1,5 @@
 <?php namespace App\Http\Controllers;
+use App\Problem;
 
 class HomeController extends Controller {
 
@@ -33,4 +34,20 @@ class HomeController extends Controller {
 		return view('Pages.donner');
 	}
 
+
+	/**
+	 * responds to post request at index.php
+	 * @return Response
+	 */
+	public function getStats(){
+        $totalProblems = Problem::count();
+
+        $solvedProblems = Problem::where('solved', 1)->get()->count();
+
+        $unsolvedProblems = Problem::where('solved', 0)->get()->count();
+
+        $data = array($totalProblems, $solvedProblems, $unsolvedProblems);
+
+        return response()->json($data);
+	}
 }

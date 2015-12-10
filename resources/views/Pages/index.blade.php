@@ -12,7 +12,7 @@
         <!-- Apply any bg-* class to to the info-box to color it -->
     </div>
 
-    <h1 class="problem-stats-heading">Problem stats</h1>
+    <h1 class="problem-stats-heading">Problem Stats</h1>
 
     {{--show problems stats--}}
     <div class="col-lg-12">

@@ -1,0 +1,200 @@
+body{font-family: 'Montserrat', sans-serif;}
+.index-buttons-wrapper{
+    margin-left: 10px;
+    display: block;
+    width: 29%;
+}
+.needy, .donner{
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+    z-index: 1000;
+    float: left;
+    font-weight: 600;
+}
+button.donner {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: black;
+    font-size: 25px;
+    opacity: 0.7;
+    position: absolute;
+    top: 150px;
+}
+button.needy{
+    background-color: rgba(255, 255, 255, 0.8);
+    color: black;
+    margin-top: 10px;
+    font-size: 25px;
+    opacity: 0.7;
+    position: absolute;
+    top: 350px;
+}
+
+
+
+/*Donner Dashboard css starts here*/
+
+.donner-buttons{
+    width:100%;
+    float: none;
+    display: block;
+    margin: 0 auto;
+}
+.donate-money, .donate-things, .help-patient{
+    width: 300px;
+    height: 200px;
+    border-radius: 10%;
+    float: left;
+    margin: 10px;
+}
+.donner-buttons:after, .help-patient:after{
+    content: " ";
+    clear: both;
+}
+.recent-problems{
+    margin-top: 300px;
+}
+.outer-donate-money{
+    background-color: #27ae60;
+}
+.pattern-layer{
+    background: url(../images/map-pattern.png) center center no-repeat;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+
+}
+.donate-things{
+    background-color: #2980b9;
+}
+.help-patient{
+    background-color: #2c3e50;
+}
+div p {
+    margin: 0 auto;
+    float: none;
+    display: block;
+    width: 31%;
+    color: white;
+    font-size: 2em;
+    margin-top: 60px;
+}
+/*
+ * Pulse animation
+*/
+
+@-webkit-keyframes pulse {
+    0% { -webkit-transform: scale(1); }
+    50% { -webkit-transform: scale(1.1); }
+    100% { -webkit-transform: scale(1); }
+}
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+.pulse:hover {
+    -webkit-animation-name: pulse;
+    animation-name: pulse;
+}
+.donate-things-form, .center-form{
+    margin: 50px auto;
+    float: none;
+    width: 50%;
+}
+.stripe-button-el{display: none;}
+
+/*
+index page banner css*********************************************************** star for begin
+*/
+.item h1, .item h2 {
+    position: absolute;
+    z-index: 1000;
+    top: 240px;
+    left: 300px;
+    background-color: rgba(34,42,51,0.80);
+    padding: 10px;
+    margin-top: 10px;
+    color: white;
+    width: 70%;
+    text-align: center;
+}
+.item h2{
+    position: absolute;
+    z-index: 1000;
+    top: 300px;
+}
+/*
+index page banner css############################################################ #for end
+*/
+
+
+/*
+index page nav css*********************************************************** star for begin
+*/
+.opaque-navbar {
+    background-color: rgba(40,96,144,0.5);
+    height: 60px;
+    border-bottom: 0px;
+    transition: background-color .5s ease 0s;
+}
+
+.opaque-navbar.opaque {
+    background-color: rgb(40,96,144);
+    height: 60px;
+    color: white;
+    transition: background-color .5s ease 0s;
+}
+
+ul.dropdown-menu {
+    background-color: rgb(40,96,144);
+    color: white;
+}
+
+
+@media (max-width: 992px) {
+    .opaque-navbar {
+        background-color: rgb(40,96,144);
+        height: 60px;
+        transition: background-color .5s ease 0s;
+    }
+
+}
+/*
+index page nav css############################################################ #for end
+*/
+
+
+/*
+index page problem stats css*********************************************************** star for begin
+*/
+.problem-stats{
+    margin-top: 20px;
+    width: 95%;
+    display: block;
+    float: none;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.info-box.bg-red{
+    float: left;
+    width: 30%;
+    display: block;
+    height: 200px;
+    margin-left: 20px;
+}
+
+.problem-stats-heading{
+    text-align: center;
+    padding: 20px;
+    background-color: #232A33;
+    color: white;
+    margin-top: 20px;
+}
+
+/*
+index page problem stats css############################################################ #for end
+*/

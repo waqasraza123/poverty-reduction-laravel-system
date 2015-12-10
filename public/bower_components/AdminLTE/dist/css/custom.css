@@ -1,0 +1,55 @@
+.donner-buttons{
+    width:100%;
+    float: none;
+    display: block;
+    margin: 0 auto;
+    padding-bottom: 280px;
+}
+.donate-money, .donate-things, .help-patient{
+    width: 300px;
+    height: 200px;
+    border-radius: 10%;
+    float: left;
+    margin: 10px;
+}
+/*.donner-buttons:after, .help-patient:after{
+    content: " ";
+    clear: both;
+}*/
+/*.recent-problems{
+    margin-top: 300px;
+}*/
+.donate-money{
+    background-color: #27ae60;
+}
+.donate-things{
+    background-color: #2980b9;
+}
+.help-patient{
+    background-color: #2c3e50;
+    background-image: url(http://wp1.themexlab.com/html/volunteer/images/icons/map-pattern.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+div p {
+    margin: 0 auto;
+    float: none;
+    display: block;
+    width: 31%;
+    color: white;
+    font-size: 2em;
+    margin-top: 60px;
+}
+.content {
+    min-height: 530px;
+}
+.donate-money {
+    background-color: #27ae60;
+    /* background-color: #6DB3F2; */
+    background-image: url(http://wp1.themexlab.com/html/volunteer/images/icons/map-pattern.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.skin-blue .main-header .navbar {
+    background-color: rgba(0,0,0,0.5);
+}

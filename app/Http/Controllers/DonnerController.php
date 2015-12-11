@@ -13,14 +13,14 @@ use Illuminate\Http\Response;
 class DonnerController extends Controller {
 
 
-    //get the current url
+    /*//get the current url
     protected $problemId;
 
     public function getCurrentUrl(){
         $str = $_SERVER['REQUEST_URI'];
         $problemId = preg_replace('/\D/', '', $str);
         return $problemId;
-    }
+    }*/
 
     /**
      * Listens to the post request at /donate-money
@@ -58,6 +58,12 @@ class DonnerController extends Controller {
         $money->save();
 
         return "done";
+    }
+
+
+    public function getProblemsData(){
+        $problems = Problem::where('solved', 0)->orderBy('id', 'desc')->get();
+        return $problems;
     }
 
 

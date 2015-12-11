@@ -64,8 +64,8 @@ Route::post('/', 'HomeController@getStats');
 
 
 //individual problems get requests
-Route::get("/problems/{id}", function(){
-    return view('Pages.individual-problems');
+Route::get("/problems/{id}", function($id){
+    return view('Pages.individual-problems', ['id' => $id]);
 });
 
 

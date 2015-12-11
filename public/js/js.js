@@ -1,6 +1,15 @@
 $(function(){
+
+    //route protection
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
     //delete the cookie on page refresh
     if(window.location.pathname == "/donner") {
+
         $.ajax({
             url: 'remove-cookie',
             method: 'post',
@@ -58,13 +67,6 @@ $(function(){
                     $(".donate-money-main").val('Please wait...');
                     console.log('here');
 
-
-                    $.ajaxSetup({
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        }
-                    });
-
                     //send complete form data
                     var dataToSend = $(".donate-money-form form").serialize();
 
@@ -98,11 +100,7 @@ $(function(){
      */
     if(window.location.pathname == "/donner") {
         (function poll(){
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
+
             var timeOut = 5000;
 
             //animated loader
@@ -127,7 +125,7 @@ $(function(){
                         else{
                             $.each(data, function(i, obj) {
 
-                                $(".problems h1").after('<div class="well well-lg problems-text" style="border-radius: 0px; color: #337ab7;">"'+obj.problem+'"</div>');
+                                $(".problems h1").after('<a href="'+"/problems/"+obj.id+'"><div class="well well-lg problems-text" style="border-radius: 0px; color: #337ab7;">"'+obj.problem+'"</div></a>');
                             });
                         }
 
@@ -149,12 +147,8 @@ $(function(){
     /**
      * send the request to get the problem stats
      */
-    if(window.location.pathname == "/"){
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
+    /*if(window.location.pathname == "/"){
+
         $.ajax(
             {
                 url: '/',
@@ -169,7 +163,7 @@ $(function(){
             }
             }
         );
-    }
+    }*/
     /**
      * #################### problem stats ################
      */
@@ -179,11 +173,7 @@ $(function(){
      */
 
     $(".submit-needy-form").click(function(event){
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
+
         event.preventDefault();
         $(this).html('<img src="../images/ripple.gif" width="32px" height="32px" style="margin-bottom: 3px;transform: translateY(-20%);border-radius: 100%; z-index: 1000;">');
         $.ajax({

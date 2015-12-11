@@ -12,6 +12,16 @@ use Illuminate\Http\Response;
 
 class DonnerController extends Controller {
 
+
+    //get the current url
+    protected $problemId;
+
+    public function getCurrentUrl(){
+        $str = $_SERVER['REQUEST_URI'];
+        $problemId = preg_replace('/\D/', '', $str);
+        return $problemId;
+    }
+
     /**
      * Listens to the post request at /donate-money
      * charges the user

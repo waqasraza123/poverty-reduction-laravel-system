@@ -24,30 +24,13 @@ class HomeController extends Controller {
 		$this->middleware('auth');
 	}
 
-	/**
-	 * Show the application dashboard to the user.
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-		return view('Pages.donner');
-	}
-
-
-	/**
-	 * responds to post request at index.php
-	 * @return Response
-	 */
-	public function getStats(){
-        $totalProblems = Problem::count();
-
-        $solvedProblems = Problem::where('solved', 1)->get()->count();
-
-        $unsolvedProblems = Problem::where('solved', 0)->get()->count();
-
-        $data = array($totalProblems, $solvedProblems, $unsolvedProblems);
-
-        return response()->json($data);
-	}
+    /**
+     * Show the application dashboard to the user.
+     *
+     * @return Response
+     */
+    public function index()
+    {
+        return view('Pages.donner');
+    }
 }

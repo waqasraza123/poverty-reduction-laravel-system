@@ -1,5 +1,6 @@
 <?php
 use Illuminate\Support\Facades\Auth;
+use App\Problem;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,11 +14,18 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function(){
-	return view('Pages.index');
+    $totalProblems = Problem::count();
+
+    $solvedProblems = Problem::where('solved', 1)->get()->count();
+
+    $unsolvedProblems = Problem::where('solved', 0)->get()->count();
+
+    return view('Pages.index', ['totalProblems' => $totalProblems, 'solvedProblems' => $solvedProblems, 'unsolvedProblems' => $unsolvedProblems]);
 });
 
 Route::get('donner', 'HomeController@index');
 
+// Authentication routes...
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
@@ -53,6 +61,13 @@ Route::post('remove-cookie', 'DonnerController@destroyCookie');
 
 //get the stats data for index page
 Route::post('/', 'HomeController@getStats');
+
+
+//individual problems get requests
+Route::get("/problems/{id}", function(){
+    return view('Pages.individual-problems');
+});
+
 
 Route::get('test', function(){
 

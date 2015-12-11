@@ -153,4 +153,27 @@ $(function(){
      * #################### problem stats ################
      */
 
+    /**
+     * send the request to save the needy form
+     */
+
+    $(".submit-needy-form").click(function(event){
+        event.preventDefault();
+        $(this).html('<img src="../images/ripple.gif" width="32px" height="32px">');
+        $.ajax({
+            url: "/needy",
+            type: 'post',
+            success: function(){
+                console.log("success");
+                $(this).html("Problem saved").hide(1000);
+                $(this).html("Submit Another Problem");
+            }
+        });
+
+    });
+
+    /**
+     * #################### needy form request ################
+     */
+
 });

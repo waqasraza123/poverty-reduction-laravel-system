@@ -1,7 +1,7 @@
 @extends('Partials.master')
-
-@section('content')
-    <div class="needy-form col-lg-6" style="margin: 0 auto; float: none;">
+@include('Partials.index-nav')
+@section('index-content')
+    <div class="needy-form col-lg-6" style="margin: 70px auto; float: none;">
 
         @if(session('status'))
             <div class="alert alert-success">
@@ -50,7 +50,7 @@
                     </div>
 
                     <div class="form-group">
-                        <input type="submit" name="submit-needy-form" class="form-control btn btn-danger" value="Submit Problem">
+                        <button type="submit" name="submit-needy-form" class="form-control btn btn-danger" >Submit Problem</button>
                     </div>
                 </form>
             </div>

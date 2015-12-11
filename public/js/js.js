@@ -1,11 +1,4 @@
 $(function(){
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-
-
     //delete the cookie on page refresh
     if(window.location.pathname == "/donner") {
         $.ajax({
@@ -25,61 +18,78 @@ $(function(){
         $('div.alert').delay(5000).slideUp(300);
     }
 
-    $(".donate-money-main").click(function(event){
-        event.preventDefault();
-        //alert('clicked');
-        var count = 0;
-        $.each($('.center-form :input:not(:submit)'), function()
-        {
-            if( !$(this).val() ) {
-                count++;
+
+    /**
+     * donate money form *************************************************************
+     */
+
+    if(window.location.pathname == '/donate-money'){
+
+        $(".stripe-button-el").toggle();
+
+        $(".donate-money-main").click(function(event){
+            event.preventDefault();
+            //alert('clicked');
+            var count = 0;
+            $.each($('.center-form :input:not(:submit)'), function()
+            {
+                if( !$(this).val() ) {
+                    count++;
+                }
+            });
+            console.log(count);
+            if(count!=0){
+                $(".necessary-fields").show();
+                $('.necessary-fields').html('All Fields are necessary');
+            }
+            else if(count==0){
+
+                if($("[name=amount]").val()<50){
+                    $(".necessary-fields").show();
+                    $('.necessary-fields').html('Amount must be greater than 50 Rs');
+                }
+                else{
+
+                    /**
+                     * start the ajax request to store the information
+                     * than show the payment button
+                     */
+
+                    $(".donate-money-main").val('Please wait...');
+                    console.log('here');
+
+
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                    });
+
+                    //send complete form data
+                    var dataToSend = $(".donate-money-form form").serialize();
+
+                    $.ajax({
+                        url: '/donate-money-main',
+                        data: dataToSend,
+                        method: 'post',
+                        success: function(data){
+                            console.log(data);
+                            $(".donate-money-main").hide();
+                            $(".necessary-fields").html("Your Payment was successful. Thank you for Donating!");
+                            $(".stripe-button-el").css('display', 'block !important').slideDown();
+
+                        }
+
+                    });
+                }
             }
         });
-        console.log(count);
-        if(count!=0){
-            $(".necessary-fields").show();
-            $('.necessary-fields').html('All Fields are necessary');
-        }
-        else if(count==0){
+    }
 
-            if($("[name=amount]").val()<50){
-                $(".necessary-fields").show();
-                $('.necessary-fields').html('Amount must be greater than 50 Rs');
-            }
-            else{
+    /**
+     * donate money form ########################################
+     */
 
-                /**
-                 * start the ajax request to store the information
-                 * than show the payment button
-                 */
-
-                $(".donate-money-main").val('Please wait...');
-                console.log('here');
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                });
-
-                //send complete form data
-                var dataToSend = $(".donate-money-form form").serialize();
-
-                $.ajax({
-                    url: '/donate-money-main',
-                    data: dataToSend,
-                    method: 'post',
-                    success: function(data){
-                        console.log(data);
-                        $(".donate-money-main").hide();
-                        $(".necessary-fields").html("Your Payment was successful. Thank you for Donating!");
-                        $(".stripe-button-el").show().slideDown();
-
-                    }
-
-                });
-            }
-        }
-    });
 
 
 
@@ -88,6 +98,12 @@ $(function(){
      */
     if(window.location.pathname == "/donner") {
         (function poll(){
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            var timeOut = 5000;
 
             //animated loader
             $(".problems h1 span").html('<img src="../images/ripple.gif" width="32px" height="32px" style="margin-left: 10px; margin-top: 5px;">');
@@ -122,7 +138,7 @@ $(function(){
                         alert(xhr.status+" ,"+" "+ajaxOptions+", "+thrownError);
                     }
                     /*, dataType: "json"*/});
-            }, 5000);
+            }, timeOut);
         })();
     }
     /** ################# END ######################
@@ -134,6 +150,11 @@ $(function(){
      * send the request to get the problem stats
      */
     if(window.location.pathname == "/"){
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
         $.ajax(
             {
                 url: '/',
@@ -158,15 +179,20 @@ $(function(){
      */
 
     $(".submit-needy-form").click(function(event){
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
         event.preventDefault();
-        $(this).html('<img src="../images/ripple.gif" width="32px" height="32px">');
+        $(this).html('<img src="../images/ripple.gif" width="32px" height="32px" style="margin-bottom: 3px;transform: translateY(-20%);border-radius: 100%; z-index: 1000;">');
         $.ajax({
             url: "/needy",
             type: 'post',
+            data: $("#needy-form").serialize(),
             success: function(){
                 console.log("success");
-                $(this).html("Problem saved").hide(1000);
-                $(this).html("Submit Another Problem");
+                $(".submit-needy-form").html("Submit Another Problem");
             }
         });
 

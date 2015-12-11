@@ -12,7 +12,7 @@
         <div class="panel panel-primary">
             <div class="panel-heading"><h2>Fill the Form</h2>All Fields are required.</div>
             <div class="panel-body">
-                <form action="/needy" method="post" name="" class="" rele="form">
+                <form action="" role="form" id="needy-form">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
 
                     <div class="form-group">
@@ -50,7 +50,7 @@
                     </div>
 
                     <div class="form-group">
-                        <button type="submit" name="submit-needy-form" class="form-control btn btn-danger" >Submit Problem</button>
+                        <button type="button" name="submit-needy-form" class="submit-needy-form form-control btn btn-danger" >Submit Problem</button>
                     </div>
                 </form>
             </div>

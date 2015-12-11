@@ -1,7 +1,7 @@
 @extends('Partials.donner-master')
 @section('content')
     <div class="donate-money-form">
-
+        <h1>Please Fill the Form carefully.</h1>
         @if(session('status'))
             <div class="alert alert-success">
                 {{session('status')}}
@@ -54,16 +54,6 @@
                 <label for="amount" class="control-label">Amount (PKR)</label>
                 <input type="number" name="amount" class="form-control" required placeholder="must be greater than 50 Rs">
             </div>
-
-            {{--<div class="form-group">
-                <label for="payment-method" class="control-label">Payment Method</label>
-                <select class="form-control" name="payment-method" required>
-                    <option value="paypal">Paypal</option>
-                    <option value="hbl">HBL</option>
-                    <option value="easypaisa">Easy Paisa</option>
-                    <option value="card">VISA/MASTER Card</option>
-                </select>
-            </div>--}}
 
             <div class="form-group">
                 <input type="submit" class="form-control btn btn-danger donate-money-main" value="Donate">

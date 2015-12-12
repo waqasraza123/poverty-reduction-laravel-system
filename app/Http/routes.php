@@ -68,6 +68,9 @@ Route::get("/problems/{id}", function($id){
     return view('Pages.individual-problems', ['id' => $id]);
 });
 
+//save the things form data
+Route::post('submit-things', 'DonnerController@saveThingsForm');
+
 
 Route::get('test', function(){
 

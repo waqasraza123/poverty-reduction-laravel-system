@@ -1,8 +1,11 @@
 @extends('Partials.donner-master')
 @section('content')
     <div class="donate-things-form">
-        <form class="" role="form" name="" action="" method="">
-            <input type="hidden" name="_token" value="{{csrf_token()}}">
+
+        <div class="alert alert-success necessary-fields" style="display: none;"></div>
+
+        <form class="" role="form" name="" action="" method="" id="things-form">
+            {{--<input type="hidden" name="_token" value="{{csrf_token()}}">--}}
 
             <div class="form-group">
                 <label for="name" class="control-label">Name</label>
@@ -25,7 +28,7 @@
             </div>
 
             <div class="form-group">
-                <input type="submit" class="form-control btn btn-danger" value="Submit Things">
+                <input type="submit" class="form-control btn btn-danger submit-things" value="Submit Things">
             </div>
 
         </form>

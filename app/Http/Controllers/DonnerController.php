@@ -3,6 +3,7 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Thing;
 use Illuminate\Http\Request;
 use Auth;
 use App\Money;
@@ -13,14 +14,6 @@ use Illuminate\Http\Response;
 class DonnerController extends Controller {
 
 
-    /*//get the current url
-    protected $problemId;
-
-    public function getCurrentUrl(){
-        $str = $_SERVER['REQUEST_URI'];
-        $problemId = preg_replace('/\D/', '', $str);
-        return $problemId;
-    }*/
 
     /**
      * Listens to the post request at /donate-money
@@ -61,6 +54,9 @@ class DonnerController extends Controller {
     }
 
 
+    /**
+     * @return collection object
+     */
     public function getProblemsData(){
         $problems = Problem::where('solved', 0)->orderBy('id', 'desc')->get();
         return $problems;
@@ -142,5 +138,23 @@ class DonnerController extends Controller {
         $response->withCookie($cookie);
 
         return $response;
+    }
+
+
+    /**
+     * save the things form
+     * @return string(success)
+     */
+    public function saveThingsForm(Request $request){
+        $things = new Thing();
+
+        $things->name = $request->input('name');
+        $things->location = $request->input('address');
+        $things->description = $request->input('description');
+        $things->quantity = $request->input('quantity');
+
+        $things->save();
+
+        return "done";
     }
 }

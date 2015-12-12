@@ -22,10 +22,10 @@ $(function(){
 
     //hide the success message
     //first check if the div.alert exist in the body
-    if($("div.alert").length!=0)
+    setInterval(function(){ if($("div.alert").length!=0)
     {
         $('div.alert').delay(5000).slideUp(300);
-    }
+    } }, 3000);
 
 
     /**
@@ -191,5 +191,32 @@ $(function(){
     /**
      * #################### needy form request ################
      */
+
+    /**
+     * send the request to save the things form
+     */
+
+    $(".submit-things").click(function(event){
+
+        event.preventDefault();
+        $(this).html('<img src="../images/ripple.gif" width="32px" height="32px" style="margin-bottom: 3px;transform: translateY(-20%);border-radius: 100%; z-index: 1000;">');
+        $.ajax({
+            url: "/submit-things",
+            type: 'post',
+            data: $("#things-form").serialize(),
+            success: function(){
+                console.log("success");
+                $(".necessary-fields").show();
+                $('.necessary-fields').html('Thank you!');
+            }
+        });
+
+    });
+
+    /**
+     * #################### things form request ################
+     */
+
+
 
 });

@@ -20,4 +20,8 @@
         </div>
 
     </div>
+    <div class="individual-problem-buttons">
+        <a href="/donate-money"><button class="btn btn-primary">Donate Money</button></a>
+        <a href="/donate-things"><button class="btn btn-danger">Donate Things</button></a>
+    </div>
 @endsection

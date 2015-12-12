@@ -134,6 +134,7 @@ class DonnerController extends Controller {
 
     /**
      * delete the count cookie
+     * @return Response object
      */
     public function destroyCookie(){
         $cookie = Cookie::forget('count');

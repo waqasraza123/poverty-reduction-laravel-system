@@ -12,6 +12,7 @@
 
         <form action="/donate-money" method="post" role="form" name="" class="center-form">
             <input type="hidden" name="_token" value="{{csrf_token()}}">
+            <input type="hidden" name="id" value="{{$id or ""}}">
 
             <div class="form-group">
                 <label for="name" class="control-label">Name</label>

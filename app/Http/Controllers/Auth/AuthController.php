@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\Registrar;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use App\User;
 use Illuminate\Http\Request;
+use Hash;
 
 class AuthController extends Controller {
 
@@ -30,6 +31,7 @@ class AuthController extends Controller {
         $user->phone = $request->input('phone');
         $user->address = $request->input('address');
         $user->donner = 1;//user is donner
+		$user->password = Hash::make($request->input('password'));
 
         $user->save();
         return redirect('/donner');

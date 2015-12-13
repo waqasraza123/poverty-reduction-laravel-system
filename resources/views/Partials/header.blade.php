@@ -2,7 +2,7 @@
 <header class="main-header">
 
     <!-- Logo -->
-    <a href="/" class="logo"><b>Volunteer</b></a>
+    <a href="/donner" class="logo"><b>Volunteer</b></a>
 
     <!-- Header Navbar -->
     <nav class="navbar navbar-static-top" role="navigation">

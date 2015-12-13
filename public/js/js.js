@@ -32,9 +32,9 @@ $(function(){
      * donate money form *************************************************************
      */
 
-    if(window.location.pathname == '/donate-money'){
+    //if(window.location.pathname == '/donate-money-req*'){
 
-        $(".stripe-button-el").toggle();
+        $(".stripe-button-el").hide();
 
         $(".donate-money-main").click(function(event){
             event.preventDefault();
@@ -86,7 +86,7 @@ $(function(){
                 }
             }
         });
-    }
+    //}
 
     /**
      * donate money form ########################################

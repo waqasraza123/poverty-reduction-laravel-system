@@ -54,3 +54,7 @@ div p {
     background-color: rgba(0,0,0,0.5);
 }
 .stripe-button-el{display: none;}
+.individual-problems-panel-heading h3{
+    padding: 10px !important;
+    margin: 0px;
+}

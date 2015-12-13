@@ -5,7 +5,8 @@
         <div class="alert alert-success necessary-fields" style="display: none;"></div>
 
         <form class="" role="form" name="" action="" method="" id="things-form">
-            {{--<input type="hidden" name="_token" value="{{csrf_token()}}">--}}
+            <input type="hidden" name="_token" value="{{csrf_token()}}">
+            <input type="hidden" name="id" value="{{$id}}">
 
             <div class="form-group">
                 <label for="name" class="control-label">Name</label>

@@ -40,6 +40,13 @@ class DonnerController extends Controller {
      */
     public function saveDetails(Request $request){
         $money = new Money();
+        $donate = new Donate();
+
+        $donate->donorId = Auth::user()->id;
+        $donate->moneyId = $request->input('id');
+        $donate->thingId = 0;
+        $donate->save();
+
         $money->name = $request->input('name');
         $money->organization = $request->input('organization');
         $money->phone = $request->input('phone');
@@ -48,6 +55,7 @@ class DonnerController extends Controller {
         $money->city = $request->input('city');
         $money->cost = $request->input('amount');
         $money->address = $request->input('address');
+        $money->problemId = $request->input('id');
 
         $money->save();
 
@@ -152,15 +160,25 @@ class DonnerController extends Controller {
 
         $donate->donorId = Auth::user()->id;
         $donate->moneyId = 0;
-        $donate->thingId = 0;
+        $donate->thingId = $request->input('id');
+        $donate->save();
 
         $things->name = $request->input('name');
         $things->location = $request->input('address');
         $things->description = $request->input('description');
         $things->quantity = $request->input('quantity');
+        $things->problemId = $request->input('id');
 
         $things->save();
 
         return "done";
+    }
+
+    public function returnDonateMoneyView($id){
+        return view('Pages.donate-money')->withId($id);
+    }
+
+    public function returnDonateThingsView($id){
+        return view('Pages.donate-things')->withId($id);
     }
 }

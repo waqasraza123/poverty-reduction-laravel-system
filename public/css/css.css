@@ -219,3 +219,8 @@ index page problem stats css****************************************************
 /*
 index page problem stats css############################################################ #for end
 */
+
+.individual-problems-panel-heading h3{
+    padding: 10px !important;
+    margin: 0px;
+}

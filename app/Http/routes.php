@@ -1,7 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Auth;
 use App\Problem;
-
+use Illuminate\Http\Response;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -39,14 +39,16 @@ Route::get('needy', function(){
 Route::post('needy', 'ProblemController@save');
 
 /*donner button routes*/
-Route::get('donate-money', function(){
-    return view('Pages.donate-money');
+Route::post('donate-money-req/{id}', 'DonnerController@returnDonateMoneyView')->middleware('auth');
+Route::get('donate-money-req/{id}', function(){
+    return view("Pages.donate-money");
 })->middleware('auth');
 
 Route::post('donate-money', 'DonnerController@charge');
 Route::post('donate-money-main', 'DonnerController@saveDetails');
 
-Route::get('donate-things', function(){
+Route::post('donate-things-req/{id}', 'DonnerController@returnDonateThingsView')->middleware('auth');
+Route::post('donate-things-req/{id}', function(){
     return view('Pages.donate-things');
 })->middleware('auth');
 
@@ -65,14 +67,16 @@ Route::post('/', 'HomeController@getStats');
 
 //individual problems get requests
 Route::get("/problems/{id}", function($id){
-    return view('Pages.individual-problems', ['id' => $id]);
+    $response = new Response();
+    $response = $response->withCookie(cookie()->forever('count', $id));
+    return view('Pages.individual-problems', ['id' => $id, 'response', $response]);
 });
 
 //save the things form data
 Route::post('submit-things', 'DonnerController@saveThingsForm');
 
 
-Route::get('test', function(){
+/*Route::get('test', function(){
 
     return view('Pages.test');
 });
@@ -82,4 +86,4 @@ Route::post('test', function(\Illuminate\Http\Request $request){
 
     Auth::user()->subscription('main')->create($token);
     return 'Done';
-});
+});*/

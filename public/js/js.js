@@ -40,7 +40,7 @@ $(function(){
             event.preventDefault();
             //alert('clicked');
             var count = 0;
-            $.each($('.center-form :input:not(:submit)'), function()
+            $.each($('.center-form :input:not(:submit, :hidden)'), function()
             {
                 if( !$(this).val() ) {
                     count++;
@@ -104,7 +104,9 @@ $(function(){
             var timeOut = 5000;
 
             //animated loader
-            $(".problems h1 span").html('<img src="../images/ripple.gif" width="32px" height="32px" style="margin-left: 10px; margin-top: 5px;">');
+            $(".problems h2 span").html('<img src="../images/ripple.gif" width="32px" height="32px" style="margin-left: 10px; margin-top: 5px;">');
+            $(".unsolved h2 span").html('<img src="../images/ripple.gif" width="32px" height="32px" style="margin-left: 10px; margin-top: 5px;">');
+            $(".solved h2 span").html('<img src="../images/ripple.gif" width="32px" height="32px" style="margin-left: 10px; margin-top: 5px;">');
 
             //check if problems are already listed
             document.cookie="length="+($(".problems-text").length);
@@ -115,7 +117,8 @@ $(function(){
                     url: "update-donner-dashboard",
                     method: 'post',
                     success: function(data){
-                        $(".problems h1 span").toggle();
+                        //remove the loading icon
+                        $(".panel-heading h2 span").toggle();
                         //Update your dashboard gauge
                         /*console.log(data);*/
 
@@ -123,9 +126,33 @@ $(function(){
                             /*alert(JSON.stringify(data));*/
                         }
                         else{
-                            $.each(data, function(i, obj) {
+                            var labelClassName;
+                            var labelText;
 
-                                $(".problems h1").after('<a href="'+"/problems/"+obj.id+'"><div class="well well-lg problems-text" style="border-radius: 0px; color: #337ab7;">"'+obj.problem+'"</div></a>');
+                            $.each(data, function(i, obj) {
+                                if(obj.severity == "extreme"){
+                                    labelClassName = "label-danger";
+                                    labelText = "Very Urgent";
+                                }
+                                if(obj.severity == "high"){
+                                    labelClassName = "label-warning";
+                                    labelText = "Urgent";
+                                }
+                                if(obj.severity == "low"){
+                                    labelClassName = "label-default";
+                                    labelText = "Normal";
+                                }
+
+                                if(obj.solved == 0){
+                                    $(".unsolved h2").after('<a href="'+"/problems/"+obj.id+'"><span class="label pull-right '+ labelClassName+'" >'+labelText+'</span><div class="well well-lg problems-text" style="border-radius: 0px; color: #337ab7;">"'+obj.problem+'"</div></a>');
+                                }
+                                else if(obj.solved == 1){
+                                    $(".solved h2").after('<a href="'+"/problems/"+obj.id+'"><span class="label pull-right '+ labelClassName+'" >'+labelText+'</span><div class="well well-lg problems-text" style="border-radius: 0px; color: #337ab7;">"'+obj.problem+'"</div></a>');
+                                }
+
+                                
+                                $(".problems h2").after('<a href="'+"/problems/"+obj.id+'"><span class="label pull-right '+ labelClassName+'" >'+labelText+'</span><div class="well well-lg problems-text" style="border-radius: 0px; color: #337ab7;">"'+obj.problem+'"</div></a>');
+
                             });
                         }
 

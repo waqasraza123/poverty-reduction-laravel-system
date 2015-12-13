@@ -49,7 +49,7 @@
                 <input type="tel" name="phone" class="form-control" value="{{Auth::user()->phone}}" required>
             </div>
 
-            <h3>Donation Information</h3><br>
+            <h3 class="text-primary">Donation Information</h3><br>
 
             <div class="form-group">
                 <label for="amount" class="control-label">Amount (PKR)</label>

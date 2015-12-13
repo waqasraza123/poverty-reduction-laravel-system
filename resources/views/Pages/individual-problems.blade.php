@@ -3,7 +3,7 @@
 @section('content')
     <div class="panel panel-primary">
 
-        <div class="panel-heading individual-problems-panel-heading" style="padding: 10px;">
+        <div class="panel-heading individual-problems-panel-heading" style="padding: 0px !important;">
             @foreach($problems as $problem)
                 @if($problem->id == $id)
                     <h3> {{$problem->name}} Posted</h3>
@@ -15,12 +15,18 @@
             <input type="hidden" name="_token" value="{{csrf_token()}}">
             <input type="hidden" name="id" value="{{$id}}">
 
-            <input type="text" class="form-control panel-body" readonly value="
-            @foreach($problems as $problem)
-                @if($problem->id == $id)
-                    {{$problem->problem}}
-                @endif
-            @endforeach">
+            <p class="form-control panel-body individual-problem-text">
+                @foreach($problems as $problem)
+                    @if($problem->id == $id)
+                        {{$problem->problem}}
+                    <br>
+                    <br>
+                        <span class="text-primary"><i class="fa fa-map-marker"></i> {{$problem->address}}</span>
+                        <span class="text-primary"><i class="fa fa-phone"></i> {{$problem->phone}}</span>
+                        <span class="text-primary"><i class="fa fa-money"></i> {{$problem->cost}} Rs (estimated cost)</span>
+                    @endif
+                @endforeach
+            </p>
 
             <div class="individual-problem-buttons panel-body">
                 <input type="submit" formaction="/donate-money-req/{{$id}}" class="btn btn-primary" value="Donate Money">

@@ -76,9 +76,10 @@ Route::get("/problems/{id}", function($id){
 Route::post('submit-things', 'DonnerController@saveThingsForm');
 
 
-/*Route::get('test', function(){
+Route::get('test', function(){
 
-    return view('Pages.test');
+    $problems = Problem::orderBy('id', 'desc')->get();
+    return $problems;
 });
 Route::post('test', function(\Illuminate\Http\Request $request){
 
@@ -86,4 +87,4 @@ Route::post('test', function(\Illuminate\Http\Request $request){
 
     Auth::user()->subscription('main')->create($token);
     return 'Done';
-});*/
+});

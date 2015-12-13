@@ -11,7 +11,10 @@ class AppServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		//
+		$str = $_SERVER['PHP_SELF'];
+		$id = preg_replace('/\D/', '', $str);
+
+		view()->share('id', $id);
 	}
 
 	/**

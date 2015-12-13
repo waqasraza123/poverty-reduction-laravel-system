@@ -96,7 +96,7 @@ class DonnerController extends Controller {
                 //if user entered a new form
                 if($count > Cookie::get('count')){
                     $mainCount = $count - Cookie::get('count');
-                    $problems = Problem::where('solved', 0)->orderBy('id', 'desc')->take($mainCount)->get();
+                    $problems = Problem::orderBy('id', 'desc')->take($mainCount)->get();
 
                     $response = new Response($problems);
                     $response->withCookie(cookie()->forever('count', $count));
@@ -125,7 +125,7 @@ class DonnerController extends Controller {
             //fetch all records
             //this code will run first time when count cookie is not set
 
-            $problems = Problem::where('solved', 0)->orderBy('id', 'desc')->get();
+            $problems = Problem::orderBy('id', 'desc')->get();
             $count = $problems->count();
 
             //this cookie will expire in next 5 years

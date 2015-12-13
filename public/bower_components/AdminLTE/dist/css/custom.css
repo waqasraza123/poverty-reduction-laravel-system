@@ -31,7 +31,7 @@
     background-repeat: no-repeat;
     background-position: center center;
 }
-div p {
+.outer-donate-money p {
     margin: 0 auto;
     float: none;
     display: block;
@@ -57,4 +57,19 @@ div p {
 .individual-problems-panel-heading h3{
     padding: 10px !important;
     margin: 0px;
+}
+.individual-problem-buttons.panel-body {
+    background-color: #EEEEEE;
+    padding: 0px;
+}
+.individual-problem-text{
+    margin-top: 0px;text-align: left !important;min-height: 100px; font-size: x-large; height: auto;
+}
+.individual-problem-text span{
+    margin-left: 10px;
+}
+.donner-right > [class$=problems]{
+    width: 30%;
+    float: left;
+    margin: 10px;
 }

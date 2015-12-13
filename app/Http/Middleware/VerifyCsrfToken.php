@@ -5,7 +5,7 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken as BaseVerifier;
 
 class VerifyCsrfToken extends BaseVerifier {
 
-	protected $except = ['/donate-money', 'donate-money-main', '/donate-money-main'];
+	protected $except = ['/*'];
 
 	/**
 	 * Handle an incoming request.

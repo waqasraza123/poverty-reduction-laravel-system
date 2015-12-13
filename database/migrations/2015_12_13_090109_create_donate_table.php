@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddFkThingMoneyToDonate extends Migration {
+class CreateDonateTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,11 +12,18 @@ class AddFkThingMoneyToDonate extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('donate', function(Blueprint $table)
+		Schema::create('donate', function(Blueprint $table)
 		{
+			$table->increments('id');
+			$table->integer('donorId')->unsigned();
 			$table->integer('moneyId')->unsigned();
 			$table->integer('thingId')->unsigned();
+			$table->timestamps();
+		});
 
+		Schema::table('donate', function(Blueprint $table)
+		{
+			$table->foreign('donorId')->references('id')->on('users');
 		});
 	}
 
@@ -27,10 +34,7 @@ class AddFkThingMoneyToDonate extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('donate', function(Blueprint $table)
-		{
-			//
-		});
+		Schema::drop('donate');
 	}
 
 }

@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Donate;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -147,6 +148,11 @@ class DonnerController extends Controller {
      */
     public function saveThingsForm(Request $request){
         $things = new Thing();
+        $donate = new Donate();
+
+        $donate->donorId = Auth::user()->id;
+        $donate->moneyId = 0;
+        $donate->thingId = 0;
 
         $things->name = $request->input('name');
         $things->location = $request->input('address');

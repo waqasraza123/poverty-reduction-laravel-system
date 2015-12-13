@@ -27,7 +27,7 @@ class AddSolvedColToProblems extends Migration {
 	{
 		Schema::table('problems', function(Blueprint $table)
 		{
-			//
+			$table->dropIfExists('solved');
 		});
 	}
 

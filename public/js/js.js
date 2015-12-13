@@ -192,6 +192,7 @@ $(function(){
      * #################### needy form request ################
      */
 
+
     /**
      * send the request to save the things form
      */
@@ -199,15 +200,20 @@ $(function(){
     $(".submit-things").click(function(event){
 
         event.preventDefault();
-        $(this).html('<img src="../images/ripple.gif" width="32px" height="32px" style="margin-bottom: 3px;transform: translateY(-20%);border-radius: 100%; z-index: 1000;">');
+        $(".submit-things").html('<img src="../images/ripple.gif" width="32px" height="32px" style="margin-bottom: 3px;transform: translateY(-20%);border-radius: 100%; z-index: 1000;">');
         $.ajax({
             url: "/submit-things",
             type: 'post',
             data: $("#things-form").serialize(),
             success: function(){
                 console.log("success");
+                $(".submit-things").text("Submit Things");
                 $(".necessary-fields").show();
                 $('.necessary-fields').html('Thank you!');
+            },
+            error: function(){
+                $(".necessary-fields").show();
+                $('.necessary-fields').html('Token Mismatch Exception!');
             }
         });
 

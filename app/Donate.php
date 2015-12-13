@@ -19,8 +19,18 @@ class Donate extends Model {
     protected $fillable = ['id', 'donorId', 'amount', 'things'];
 
 
+    //Donate belongs to user
     public function user(){
-        return $this->hasMany('donate', 'donorId', 'id');
+        return $this->belongsTo('User', 'donorId', 'id');
     }
 
+    //donate has things
+    public function thing(){
+        return $this->hasMany('App\Thing', 'thingId', 'id');
+    }
+
+    //donate has money
+    public function money(){
+        return $this->hasMany('App\Money', 'moneyId', 'id');
+    }
 }

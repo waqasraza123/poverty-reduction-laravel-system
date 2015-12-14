@@ -30,10 +30,7 @@ Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
-
-Route::get('needy', function(){
-    return view('Pages.needy');
-});
+Route::get('needy', 'ProblemController@needyForm');
 
 /*handle post request to save form data*/
 Route::post('needy', 'ProblemController@save');
@@ -52,9 +49,6 @@ Route::post('donate-things-req/{id}', function(){
     return view('Pages.donate-things');
 })->middleware('auth');
 
-Route::get('help-patient', function(){
-    return view('Pages.help-patient');
-})->middleware('auth');
 
 
 //update the dashboard
@@ -67,9 +61,8 @@ Route::post('/', 'HomeController@getStats');
 
 //individual problems get requests
 Route::get("/problems/{id}", function($id){
-    $response = new Response();
-    $response = $response->withCookie(cookie()->forever('count', $id));
-    return view('Pages.individual-problems', ['id' => $id, 'response', $response]);
+
+    return view('Pages.individual-problems', ['id' => $id]);
 });
 
 //save the things form data
@@ -78,8 +71,7 @@ Route::post('submit-things', 'DonnerController@saveThingsForm');
 
 Route::get('test', function(){
 
-    $problems = Problem::orderBy('id', 'desc')->get();
-    return $problems;
+    return $donor;
 });
 Route::post('test', function(\Illuminate\Http\Request $request){
 

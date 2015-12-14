@@ -150,7 +150,7 @@ $(function(){
                                     $(".solved h2").after('<a href="'+"/problems/"+obj.id+'"><span class="label pull-right '+ labelClassName+'" >'+labelText+'</span><div class="well well-lg problems-text" style="border-radius: 0px; color: #337ab7;">"'+obj.problem+'"</div></a>');
                                 }
 
-                                
+
                                 $(".problems h2").after('<a href="'+"/problems/"+obj.id+'"><span class="label pull-right '+ labelClassName+'" >'+labelText+'</span><div class="well well-lg problems-text" style="border-radius: 0px; color: #337ab7;">"'+obj.problem+'"</div></a>');
 
                             });
@@ -250,6 +250,34 @@ $(function(){
      * #################### things form request ################
      */
 
+
+
+    /**
+     * store the cookie when the user clicks on the needy button on index.php
+     * to track that user is needy so register in db by setting donner = 0
+     */
+
+    $(".needy").click(function(){
+        document.cookie="username=needy";
+    });
+
+
+    /**
+     * ************************************************************
+     * send the register request
+     */
+    $(".register-needy").click(function(event){
+
+        /*$.removeCookie("username");*/
+        var delete_cookie = function(name) {
+            document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+        };
+        delete_cookie('username');
+
+    });
+    /**
+     * end register ajax request #############################################
+     */
 
 
 });

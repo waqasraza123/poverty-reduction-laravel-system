@@ -7,7 +7,7 @@ class ProblemServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap any application services.
-     *
+     *in provider's boot method we bind the view to composer's composer method
      * @return void
      */
     public function boot()

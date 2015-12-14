@@ -1,7 +1,6 @@
-@extends('Partials.master')
-@include('Partials.index-nav')
-@section('index-content')
-    <div class="needy-form col-lg-6" style="margin: 70px auto; float: none;">
+@extends('Partials.donner-master')
+@section('content')
+    <div class="needy-form col-lg-6" style="margin: 10px auto; float: none; width: 70%;">
 
         @if(session('status'))
             <div class="alert alert-success">

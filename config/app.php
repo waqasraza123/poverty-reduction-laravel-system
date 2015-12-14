@@ -148,6 +148,7 @@ return [
 
 		//registering my own provider
 		'App\Providers\ProblemServiceProvider',
+        'App\Providers\DashboardServiceProvider',
 
 	],
 

@@ -1,6 +1,7 @@
 <?php namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Auth;
 
 class AppServiceProvider extends ServiceProvider {
 
@@ -11,10 +12,11 @@ class AppServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
+        //pass the request id that is currently being viewd
 		$str = $_SERVER['PHP_SELF'];
 		$id = preg_replace('/\D/', '', $str);
 
-		view()->share('id', $id);
+		view()->share(['id' => $id]);
 	}
 
 	/**

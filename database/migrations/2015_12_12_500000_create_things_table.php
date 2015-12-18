@@ -19,6 +19,7 @@ class CreateThingsTable extends Migration {
 			$table->string('description');
 			$table->string('location');
 			$table->string('quantity');
+			$table->unsignedInteger('problemId');
 			$table->timestamps();
 		});
 	}

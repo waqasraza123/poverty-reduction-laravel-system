@@ -13,7 +13,7 @@ class ProblemServiceProvider extends ServiceProvider
     public function boot()
     {
         view()->composer(
-            'Pages.individual-problems', 'App\Http\ViewComposers\ProblemsComposer'
+            ['Partials.donner-master', 'Partials.current-problems', 'Pages.individual-problems'], 'App\Http\ViewComposers\ProblemsComposer'
         );
 
     }

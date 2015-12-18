@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddProblemIdToMoneyTable extends Migration {
+class CreateMoneyTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,9 +12,19 @@ class AddProblemIdToMoneyTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('money', function(Blueprint $table)
+		Schema::create('money', function(Blueprint $table)
 		{
+			$table->increments('id');
+			$table->string('name');
+			$table->string('organization')->default(null);
+			$table->string('phone');
+			$table->string('email');
+			$table->string('address');
+			$table->string('city');
+			$table->string('state');
+			$table->integer('cost')->notNull()->unsigned();
 			$table->integer('problemId')->unsigned();
+			$table->timestamps();
 		});
 
 		Schema::table('money', function(Blueprint $table)
@@ -30,10 +40,7 @@ class AddProblemIdToMoneyTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('money', function(Blueprint $table)
-		{
-			$table->dropIfExists('problemId');
-		});
+		Schema::drop('money');
 	}
 
 }

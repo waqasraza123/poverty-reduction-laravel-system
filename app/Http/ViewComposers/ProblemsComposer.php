@@ -9,6 +9,7 @@ class ProblemsComposer
 {
 
     protected $problems;
+    protected $allProblems;
 
     /**
      * Create a new profile composer.
@@ -19,8 +20,9 @@ class ProblemsComposer
     public function __construct(DonnerController $donnerController)
     {
         // Dependencies automatically resolved by service container...
-        global $problems;
+        global $problems,$allProblems;
         $problems = $donnerController->getProblemsData();
+        $allProblems = $donnerController->getAllProblems();
     }
 
     /**
@@ -31,7 +33,7 @@ class ProblemsComposer
      */
     public function compose(View $view)
     {
-        global $problems;
-        $view->withProblems($problems);
+        global $problems, $allProblems;
+        $view->with(['problems' => $problems, 'allProblems' => $allProblems]);
     }
 }

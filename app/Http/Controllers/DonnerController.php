@@ -71,6 +71,15 @@ class DonnerController extends Controller {
         return $problems;
     }
 
+    /**
+     * get all problems
+     */
+    public function getAllProblems(){
+        $allProblems = Problem::all();
+
+        return $allProblems;
+    }
+
 
     /**
      * Update the donner dashboard

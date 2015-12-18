@@ -9,4 +9,11 @@ class Problem extends Model {
 
 	protected $fillable = ['name', 'phone', 'address', 'problem', 'cost', 'severity'];
 
+    /**
+     * problem belongs to a user
+     */
+    public function user(){
+        return $this->belongsTo('App\User', 'userId', 'id');
+    }
+
 }

@@ -68,10 +68,14 @@ Route::get("/problems/{id}", function($id){
 //save the things form data
 Route::post('submit-things', 'DonnerController@saveThingsForm');
 
+//list current user problems
+Route::get('problems', function(){
+    return view('Partials.current-problems');
+});
 
 Route::get('test', function(){
 
-    return $donor;
+    return Auth::user()->al;
 });
 Route::post('test', function(\Illuminate\Http\Request $request){
 

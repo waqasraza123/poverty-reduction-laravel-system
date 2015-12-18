@@ -14,6 +14,9 @@ class CreateProblemsTable extends Migration {
 	{
 		Schema::create('problems', function(Blueprint $table)
 		{
+			//only this engine supports database
+			$table->engine = 'InnoDB';
+
 			$table->increments('id');
 			$table->string('name');
 			$table->string('phone')->unique();
@@ -21,6 +24,8 @@ class CreateProblemsTable extends Migration {
 			$table->string('problem');
 			$table->string('severity');
 			$table->integer('cost');
+			$table->integer('solved')->default(0)->unsigned();
+			$table->unsignedInteger('userId');
 			$table->timestamps();
 		});
 	}

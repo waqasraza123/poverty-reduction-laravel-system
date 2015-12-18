@@ -11,7 +11,11 @@
             </div>
             <div class="pull-left info">
                 <a href="/donner">
-                    <p>{{(Auth::user()->name)}}</p>
+                    <p>
+                        @if(Auth::check())
+                            {{(Auth::user()->name)}}
+                        @endif
+                    </p>
                 </a>
                 <!-- Status -->
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
@@ -24,8 +28,10 @@
             @if(Auth::user()->donor == 1)
                 @include('Partials.Sidebars.donor')
 
+            {{--user is needy--}}
             @else
-                <a href="/current-user-problems"><button class="btn btn-danger" style="width:100%; margin-top: 50px; border-radius: 0px;">My Submitted Problems</button></a>
+                <a href="/problems"><button class="btn btn-danger" style="width:100%; margin-top: 50px; border-radius: 0px;">My Submitted Problems</button></a>
+                <a href="/needy"><button class="btn btn-success" style="width:100%; margin-top: 10px; border-radius: 0px;">Post a Problem</button></a>
 
                 @include('Partials.Sidebars.needy')
 

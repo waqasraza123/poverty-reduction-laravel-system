@@ -4,12 +4,11 @@
     <div class="panel panel-primary">
         <div class="panel-heading"><h2>All Problems</h2></div>
         <div class="panel-body">
-            @foreach($allProblems as $problem)
+            @foreach(Auth::user()->problems as $problem)
                 <div class="well well-lg">
-                    @if($problem->user->donner == 0)
-                        {{$problem->problem}}
-                    @endif
+                    <a href="/problems/{{Auth::user()->id}}">{{$problem->problem}}</a>
                 </div>
+
             @endforeach
         </div>
     </div>

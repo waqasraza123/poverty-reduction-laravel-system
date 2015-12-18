@@ -20,7 +20,9 @@ class DashboardComposer
     {
         // Dependencies automatically resolved by service container...
         global $user;
-        $user = Auth::user()->donner;
+        if(Auth::check()) {
+            $user = Auth::user()->donner;
+        }
     }
 
     /**

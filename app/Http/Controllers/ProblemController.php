@@ -3,6 +3,7 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Problem;
+use Auth;
 
 use Illuminate\Http\Request;
 
@@ -48,6 +49,7 @@ class ProblemController extends Controller {
             $problem->problem = $request->input('problem');
             $problem->severity = $request->input('severity');
             $problem->cost = $request->input('cost');
+            $problem->userId = Auth::user()->id;
             $problem->save();//else record wont be saved
 
             return back()->with('status','Your Problem has been submitted. Please be patience while a Donner volunteer to help you. Thanks');

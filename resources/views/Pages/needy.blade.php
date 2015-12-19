@@ -1,6 +1,6 @@
 @extends('Partials.donner-master')
 @section('content')
-    <div class="needy-form col-lg-6" style="margin: 10px auto; float: none; width: 70%;">
+    <div class="needy-form col-lg-6" style="margin: 10px auto; float: none; width: 100%;">
 
         @if(session('status'))
             <div class="alert alert-success">

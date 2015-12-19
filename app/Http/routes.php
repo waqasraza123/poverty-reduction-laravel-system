@@ -73,9 +73,16 @@ Route::get('problems', function(){
     return view('Partials.current-problems');
 });
 
+//problem is marked completed by needy
+Route::post('problems/{id}/solved', 'ProblemController@solved');
+
+//problem is cancelled by needy
+Route::post('problems/{id}/cancel', 'ProblemController@cancel');
+
+
 Route::get('test', function(){
 
-    return Auth::user()->al;
+    return Hash::make("0utsource32");
 });
 Route::post('test', function(\Illuminate\Http\Request $request){
 

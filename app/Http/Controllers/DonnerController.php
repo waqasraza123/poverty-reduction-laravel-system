@@ -72,12 +72,10 @@ class DonnerController extends Controller {
     }
 
     /**
-     * get all problems
+     * get all problems solved or not
      */
     public function getAllProblems(){
-        $allProblems = Problem::all();
-
-        return $allProblems;
+        return $allProblems = Problem::all();
     }
 
 

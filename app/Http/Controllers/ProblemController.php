@@ -54,4 +54,26 @@ class ProblemController extends Controller {
 
             return back()->with('status','Your Problem has been submitted. Please be patience while a Donner volunteer to help you. Thanks');
     }
+
+        /**
+         * problem is saved
+         * @param problem id, Request object
+         */
+        public function solved($id){
+
+            $problem = Problem::findOrFail($id);
+
+            if(isset($_POST['solved'])){
+                $problem->solved = 1;
+                $problem->save();
+                return view('Pages.individual-problems')->with(["status" => "Problem status has been changed to Complete", 'currentProblem' => $problem]);
+            }
+
+            return $problem;
+        }
+
+        //cancel problem
+        public function cancel($id){
+            return back();
+        }
 }

@@ -160,7 +160,7 @@ $(function(){
                         //Setup the next poll recursively
                         poll();
                     },error: function(xhr, ajaxOptions, thrownError){
-                        alert(xhr.status+" ,"+" "+ajaxOptions+", "+thrownError);
+                        console.log(xhr.status+" ,"+" "+ajaxOptions+", "+thrownError);
                     }
                     /*, dataType: "json"*/});
             }, timeOut);

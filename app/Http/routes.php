@@ -30,24 +30,26 @@ Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
+
+
 Route::get('needy', 'ProblemController@needyForm');
 
 /*handle post request to save form data*/
 Route::post('needy', 'ProblemController@save');
 
 /*donner button routes*/
-Route::post('donate-money-req/{id}', 'DonnerController@returnDonateMoneyView')->middleware('auth');
+Route::post('donate-money-req/{id}', 'DonnerController@returnDonateMoneyView')->middleware('donor-auth');
 Route::get('donate-money-req/{id}', function(){
     return view("Pages.donate-money");
-})->middleware('auth');
+})->middleware('donor-auth');
 
 Route::post('donate-money', 'DonnerController@charge');
 Route::post('donate-money-main', 'DonnerController@saveDetails');
 
-Route::post('donate-things-req/{id}', 'DonnerController@returnDonateThingsView')->middleware('auth');
+Route::post('donate-things-req/{id}', 'DonnerController@returnDonateThingsView')->middleware('donor-auth');
 Route::post('donate-things-req/{id}', function(){
     return view('Pages.donate-things');
-})->middleware('auth');
+})->middleware('donor-auth');
 
 
 

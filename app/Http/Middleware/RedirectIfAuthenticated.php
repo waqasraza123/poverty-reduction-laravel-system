@@ -33,9 +33,18 @@ class RedirectIfAuthenticated {
 	 */
 	public function handle($request, Closure $next)
 	{
+        //if user is logged in
 		if ($this->auth->check())
 		{
-			return new RedirectResponse(url('/home'));
+			//redirect to /needy if user is needy
+			if($this->auth->user()->donner == 0) {
+				return new RedirectResponse(url('/needy'));
+			}
+
+			//else redirect to /donner page if user is donor
+			elseif($this->auth->user()->donner == 1) {
+				return new RedirectResponse(url('/donner'));
+			}
 		}
 
 		return $next($request);

@@ -84,10 +84,9 @@ class DonnerController extends Controller {
      * fetch new requests from db
      * responds to post request on /update-donner-dashboard route
      */
-    public function updateDashboard(){
+    public function updateDashboard(Request $request){
         $count = 0;
         $mainCount = 0;
-
 
         //first check if the cookie is set or not
         //this code will run when the count cookie is set

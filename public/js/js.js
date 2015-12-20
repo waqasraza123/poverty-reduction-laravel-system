@@ -115,6 +115,7 @@ $(function(){
             setTimeout(function(){
                 $.ajax({
                     url: "update-donner-dashboard",
+                    data: $("input[name=_token]").val(),
                     method: 'post',
                     success: function(data){
                         //remove the loading icon
@@ -170,30 +171,6 @@ $(function(){
      * update the donner dashboard with new requests of help
      */
 
-
-    /**
-     * send the request to get the problem stats
-     */
-    /*if(window.location.pathname == "/"){
-
-        $.ajax(
-            {
-                url: '/',
-                type: 'post',
-                dataType: 'json',
-                success: function(data){
-                    $(".info-box-number.total").html(data[0]);
-                    $(".info-box-number.solved").html(data[1]);
-                    $(".info-box-number.unsolved").html(data[2]);
-                },error: function(xhr, status, thrownError){
-                alert(xhr.status+" ,"+" "+status+", "+thrownError);
-            }
-            }
-        );
-    }*/
-    /**
-     * #################### problem stats ################
-     */
 
     /**
      * send the request to save the needy form

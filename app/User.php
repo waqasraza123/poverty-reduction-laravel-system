@@ -36,7 +36,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	protected $hidden = ['password', 'remember_token'];
 
 	public function donate(){
-		return $this->belongsTo('user', 'donorId', 'id');
+		return $this->hasMany('App\Donate', 'donorId', 'id');
 	}
 
 	public function problems()

@@ -21,7 +21,7 @@ class Donate extends Model {
 
     //Donate belongs to user
     public function user(){
-        return $this->belongsTo('User', 'donorId', 'id');
+        return $this->belongsTo('App\User', 'donorId', 'id');
     }
 
     //donate has things

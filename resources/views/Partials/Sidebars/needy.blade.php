@@ -1,0 +1,2 @@
+<a href="/problems"><button class="btn btn-danger" style="width:100%; margin-top: 50px; border-radius: 0px;">My Submitted Problems</button></a>
+<a href="/needy"><button class="btn btn-success" style="width:100%; margin-top: 10px; border-radius: 0px;">Post a Problem</button></a>

@@ -1,6 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Auth;
 use App\Problem;
+use App\User;
 use Illuminate\Http\Response;
 /*
 |--------------------------------------------------------------------------
@@ -12,6 +13,19 @@ use Illuminate\Http\Response;
 | and give it the controller to call when that URI is requested.
 |
 */
+
+Route::filter('csrf', function($route, $request) {
+    if (strtoupper($request -> getMethod()) === 'GET') {
+        return;
+        // get requests are not CSRF protected
+    }
+
+    $token = $request -> ajax() ? $request -> header('X-CSRF-Token') : Input::get('_token');
+
+    if (Session::token() != $token) {
+        throw new Illuminate\Session\TokenMismatchException;
+    }
+});
 
 Route::get('/', function(){
     $totalProblems = Problem::count();
@@ -84,7 +98,8 @@ Route::post('problems/{id}/cancel', 'ProblemController@cancel');
 
 Route::get('test', function(){
 
-    return Hash::make("0utsource32");
+    $user = User::findOrFail(2);
+    return $user->donate;
 });
 Route::post('test', function(\Illuminate\Http\Request $request){
 

@@ -4,5 +4,5 @@
         Fail until you succeed.
     </div>
     <!-- Default to the left -->
-    <strong>Copyright © 2015 <a href="http://wpgeeks.net">WpGeeks.net</a>.</strong> All Rights Reserved.
+    <strong>Copyright © 2015 - <?php echo date('Y');?> <a href="http://waqasraza.com">Chaudhry Waqas</a>.</strong> All Rights Reserved.
 </footer>

@@ -10,12 +10,11 @@
                 <span class="glyphicon glyphicon-chevron-right" style="color:white;"></span>
 
             </button>
-            <a class="navbar-brand" href="/" style="color:white;">Volunteer</a>
+            <a class="navbar-brand" href="/" style="color:white;">Help the Needy</a>
         </div>
         <div class="collapse navbar-collapse" id="navMain">
             <ul class="nav navbar-nav pull-right">
                 <li class="active"><a href="/">Home</a></li>
-                <li><a href="/about">About Us</a></li>
             </ul>
         </div>
     </div>
